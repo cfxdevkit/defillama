@@ -1,10 +1,25 @@
-// Core exports
-export { DeFiLlama } from "./core/defillama";
+/**
+ * DeFi Llama API Client
+ * @packageDocumentation
+ */
 
-// Type exports
+// Core exports
+export { DeFiLlama, DefiLlamaAPI } from "./core";
+
+// Export all types that are referenced in the public API
 export type {
+  // Analysis types
+  FormattedChainTVLAnalysis,
+  FormattedProtocolAnalysis,
+  TVLDataPoint,
+  TVLAnalysis,
+  ProtocolInfo,
+  ChainTVLAnalysis,
+  // Response types
   Protocol,
   Chain,
-  ChainTVLDataPoint,
+  RawProtocolTVLEntry,
   ProtocolTVLResponse,
-} from "./types/responses";
+  ChainTVLDataPoint,
+  ChainsResponse,
+} from "./types";

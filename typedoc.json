@@ -1,0 +1,26 @@
+{
+  "entryPoints": ["src/index.ts"],
+  "out": "docs",
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "excludeExternals": false,
+  "includeVersion": true,
+  "gitRemote": "origin",
+  "gitRevision": "main",
+  "readme": "README.md",
+  "name": "@cfxdevkit/defillama",
+  "excludeReferences": false,
+  "excludeNotDocumented": false,
+  "visibilityFilters": {
+    "protected": true,
+    "private": false,
+    "inherited": true,
+    "external": true
+  },
+  "intentionallyNotExported": [],
+  "validation": {
+    "notExported": true,
+    "invalidLink": true,
+    "notDocumented": false
+  }
+} 

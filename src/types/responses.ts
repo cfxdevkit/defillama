@@ -1,14 +1,25 @@
-// Base response types
+/**
+ * Base TVL data point with string date
+ * @public
+ */
 export interface TVLDataPoint {
   date: string;
   tvl: number;
 }
 
+/**
+ * Chain TVL data point with numeric date
+ * @public
+ */
 export interface ChainTVLDataPoint {
-  date: number; // Unix timestamp
+  date: number;
   tvl: number;
 }
 
+/**
+ * Summary of TVL statistics
+ * @public
+ */
 export interface TVLSummary {
   currentTVL: number;
   monthlyChange: number;
@@ -18,7 +29,10 @@ export interface TVLSummary {
   last12Months: TVLDataPoint[];
 }
 
-// Protocol types
+/**
+ * Protocol information from DeFi Llama
+ * @public
+ */
 export interface Protocol {
   id: string;
   name: string;
@@ -47,6 +61,20 @@ export interface Protocol {
   methodology?: string | null;
 }
 
+/**
+ * Raw TVL data point for a protocol
+ * @public
+ */
+export interface RawProtocolTVLEntry {
+  date: number;
+  totalLiquidityUSD?: number;
+  tokens?: Record<string, number>;
+}
+
+/**
+ * Complete protocol TVL response
+ * @public
+ */
 export interface ProtocolTVLResponse {
   // Base Protocol fields
   id: string;
@@ -56,36 +84,36 @@ export interface ProtocolTVLResponse {
   url: string;
   description: string;
   chain: string;
+  chains: string[];
   logo: string | null;
   audits: string | null;
   audit_note: string | null;
-  gecko_id: string | null;
-  cmcId: string | null;
   category: string;
-  chains: string[];
-  module: string;
-  twitter: string | null;
-  forkedFrom: string[];
   oracles: string[];
-  methodology?: string | null;
-
-  // TVL specific fields
-  tvl: number[];
-  tokensInUsd?: number[];
-  tokens?: Record<string, number[]>;
-  timestamp: number[];
+  forkedFrom: string[];
+  twitter: string | null;
+  audit_links: string[];
+  listedAt: number;
+  github: string[];
+  currentChainTvls: Record<string, number>;
+  tvl: RawProtocolTVLEntry[];
   chainTvls: Record<
     string,
     {
-      tvl: number[];
-      tokensInUsd: number[];
-      tokens: Record<string, number[]>[];
-      timestamp: number[];
+      tvl: RawProtocolTVLEntry[];
     }
   >;
+
+  // TVL specific fields
+  tokensInUsd?: number[];
+  tokens?: Record<string, number[]>;
+  timestamp: number[];
 }
 
-// Chain types
+/**
+ * Chain information
+ * @public
+ */
 export interface Chain {
   tvl: number;
   tokenSymbol: string;
@@ -94,6 +122,10 @@ export interface Chain {
   chainId: number | null;
 }
 
+/**
+ * Response containing chain information
+ * @public
+ */
 export interface ChainsResponse {
   chains: Chain[];
 }
