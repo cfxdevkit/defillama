@@ -23,12 +23,12 @@
     "docs": "typedoc --out docs src/index.ts",
     "clean": "rimraf dist coverage docs",
     "example": "ts-node examples/usage.ts",
-    "bump:patch": "npm run docs && git add . && git commit -m \"chore(release): docs update to %s\" && npm version patch -m \"chore(release): bump version to %s\"",
-    "bump:minor": "npm run docs && git add . && git commit -m \"chore(release): docs update to %s\" && npm version minor -m \"chore(release): bump version to %s\"",
-    "bump:major": "npm run docs && git add . && git commit -m \"chore(release): docs update to %s\" && npm version major -m \"chore(release): bump version to %s\"",
+    "bump:patch": "npm version patch -m \"chore(release): bump version to %s\"",
+    "bump:minor": "npm version minor -m \"chore(release): bump version to %s\"",
+    "bump:major": "npm version major -m \"chore(release): bump version to %s\"",
     "preversion": "npm run validate",
     "validate": "npm run lint && npm run format:check && npm run test",
-    "version": "git add package.json",
+    "version": "npm run docs && git add docs package.json",
     "postversion": "git push && git push --tags"
   },
   "keywords": [
