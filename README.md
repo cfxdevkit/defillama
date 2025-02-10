@@ -3,7 +3,13 @@
 A TypeScript library for interacting with the DeFi Llama API, providing easy access to DeFi protocol and chain TVL (Total Value Locked) data with optional analysis features.
 
 [![npm version](https://img.shields.io/npm/v/@cfxdevkit/defillama)](https://www.npmjs.com/package/@cfxdevkit/defillama)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/cfxdevkit/defillama/ci.yml)](https://github.com/cfxdevkit/defillama/actions)
+[![Coverage Status](https://codecov.io/gh/cfxdevkit/defillama/branch/main/graph/badge.svg)](https://codecov.io/gh/cfxdevkit/defillama)
+[![npm bundle size](https://img.shields.io/bundlephobia/minzip/@cfxdevkit/defillama)](https://bundlephobia.com/package/@cfxdevkit/defillama)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue.svg)](https://www.typescriptlang.org/)
+[![Node Version](https://img.shields.io/node/v/@cfxdevkit/defillama)](https://www.npmjs.com/package/@cfxdevkit/defillama)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/cfxdevkit/defillama/pulls)
 
 ## Features
 
