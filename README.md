@@ -34,6 +34,131 @@ const protocolTVL = await defiLlama.getProtocolTVL('uniswap');
 const chainTVL = await defiLlama.getHistoricalChainTVL('ethereum', true);
 ```
 
+## Examples
+
+### Error Handling
+
+The library includes comprehensive error handling for invalid inputs:
+
+```typescript
+const defiLlama = new DeFiLlama();
+
+try {
+  // This will throw an error for non-existent protocol
+  await defiLlama.getProtocolTVL('non-existent-protocol');
+} catch (error) {
+  console.error('Error:', error.message);
+  // Output: Error: HTTP error! status: 400
+}
+
+try {
+  // This will throw an error for invalid chain
+  await defiLlama.getHistoricalChainTVL('invalid-chain');
+} catch (error) {
+  console.error('Error:', error.message);
+  // Output: Error: HTTP error! status: 400
+}
+```
+
+### Protocol Methods
+
+#### Get All Protocols
+```typescript
+const protocols = await defiLlama.getProtocols();
+// Returns array of protocols with details like:
+// [
+//   {
+//     id: '2269',
+//     name: 'Binance CEX',
+//     url: 'https://www.binance.com',
+//     description: 'Binance is a cryptocurrency exchange...',
+//     chain: 'Multi-Chain',
+//     tvl: 144318054315.48734,
+//     chainTvls: {
+//       Ethereum: 40481829144.37302,
+//       Bitcoin: 55798161484.458565,
+//       // ... other chains
+//     }
+//   },
+//   // ... other protocols
+// ]
+```
+
+#### Get Protocol TVL with Analysis
+```typescript
+// Get formatted TVL data with analysis
+const swappiTVL = await defiLlama.getProtocolTVL('swappi', true);
+// Returns detailed analysis:
+// {
+//   protocolInfo: {
+//     name: 'Swappi',
+//     currentChainTvls: { Conflux: '$9.71M' }
+//     // ... other protocol info
+//   },
+//   tvlAnalysis: {
+//     overall: {
+//       currentTVL: '$9.71M',
+//       averageTVL: '$14.39M',
+//       totalChange: '-76.15%'
+//     },
+//     yearlyAnalysis: [
+//       {
+//         year: 2023,
+//         average: '$15.94M',
+//         percentageChange: '+348.77%'
+//       }
+//       // ... other years
+//     ]
+//   }
+// }
+```
+
+#### Get Current Protocol TVL
+```typescript
+const currentTVL = await defiLlama.getCurrentProtocolTVL('abc-pool');
+// Returns: 9611050.44
+```
+
+### Chain Methods
+
+#### Get All Chains
+```typescript
+const chains = await defiLlama.getChains();
+// Returns array of chains with details like:
+// [
+//   {
+//     name: 'Harmony',
+//     chainId: 1666600000,
+//     tvl: 1790390.10,
+//     tokenSymbol: 'ONE'
+//   }
+//   // ... other chains
+// ]
+```
+
+#### Get Historical Chain TVL with Analysis
+```typescript
+const ethereumTVL = await defiLlama.getHistoricalChainTVL('ethereum', true);
+// Returns detailed analysis:
+// {
+//   chainAnalysis: {
+//     overall: {
+//       currentTVL: '$56.24B',
+//       averageTVL: '$29.97B',
+//       totalChange: '+13918890.65%'
+//     },
+//     yearlyAnalysis: [
+//       {
+//         year: 2023,
+//         average: '$20.70B',
+//         percentageChange: '+429.86%'
+//       }
+//       // ... other years
+//     ]
+//   }
+// }
+```
+
 ## API Reference
 
 ### Protocols
