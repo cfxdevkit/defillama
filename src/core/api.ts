@@ -40,20 +40,20 @@ export class DefiLlamaAPI {
         }
       });
 
-      logger.debug(`Fetching DeFiLlama data from: ${url.toString()}`);
+      logger.debug({ url: url.toString() }, "Fetching DeFiLlama data");
       const response = await fetch(url.toString());
 
       if (!response.ok) {
-        logger.error(`DeFiLlama API request failed with status: ${response.status}`);
+        logger.error({ status: response.status }, "DeFiLlama API request failed");
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
       const data = await response.json();
-      logger.debug("API Response:", { endpoint, data });
+      logger.debug({ endpoint, data }, "API Response");
       logger.debug("Data fetched successfully");
       return data;
     } catch (error) {
-      logger.error(`Error fetching ${endpoint}:`, error);
+      logger.error({ endpoint, error }, `Error fetching ${endpoint}`);
       throw error;
     }
   }
